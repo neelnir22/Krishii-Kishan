@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - Krishi Kishan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo">Krishi <span>Kishan</span></div>
+        <nav>
+          <ul>
+            <li><a href="web.html">Home</a></li>
+            <li><a href="market-linkage.html">Market Linkage</a></li>
+            <li><a href="soil-testing.html">Soil Testing</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="renting.html">Rent Equipment</a></li>
+            <li><a href="profile.html" class="active">Profile</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="profile-container">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <h2 id="userName">Loading...</h2>
+        <p id="userEmail">Loading...</p>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat-card">
+          <div class="stat-value" id="listingsCount">0</div>
+          <div class="stat-label">Active Listings</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="rentalsCount">0</div>
+          <div class="stat-label">Equipment Rentals</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="communityPosts">0</div>
+          <div class="stat-label">Community Posts</div>
+        </div>
+      </div>
+
+      <div class="profile-info">
+        <div class="info-item">
+          <div class="info-label">Full Name:</div>
+          <div class="info-value" id="fullName">Loading...</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Email:</div>
+          <div class="info-value" id="email">Loading...</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Phone:</div>
+          <div class="info-value" id="phone">Loading...</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Location:</div>
+          <div class="info-value" id="location">Loading...</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Member Since:</div>
+          <div class="info-value" id="joinDate">Loading...</div>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button class="btn btn-primary" onclick="editProfile()">
+          <i class="fas fa-edit"></i> Edit Profile
+        </button>
+        <button class="btn btn-danger" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+
+      <div class="tab-container">
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab('rentals')">
+            My Rentals
+          </div>
+          <div class="tab" onclick="switchTab('community')">
+            Community Posts
+          </div>
+          <div class="tab" onclick="switchTab('market')">Market Listings</div>
+        </div>
+
+        <div id="rentals" class="tab-content active">
+          <h3 class="section-title">My Equipment Rentals</h3>
+          <div class="activity-grid" id="rentalsGrid">
+            <!-- Rentals will be populated here -->
+          </div>
+        </div>
+
+        <div id="community" class="tab-content">
+          <h3 class="section-title">My Community Posts</h3>
+          <div class="activity-grid" id="communityGrid">
+            <!-- Community posts will be populated here -->
+          </div>
+        </div>
+
+        <div id="market" class="tab-content">
+          <h3 class="section-title">My Market Listings</h3>
+          <div class="activity-grid" id="marketGrid">
+            <!-- Market listings will be populated here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">Krishi <span>Kishan</span></div>
+            <p>Empowering farmers with technology</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="web.html">Home</a></li>
+              <li><a href="market-linkage.html">Market Linkage</a></li>
+              <li><a href="soil-testing.html">Soil Testing</a></li>
+              <li><a href="chatbot.html">AI Chatbot</a></li>
+              <li><a href="community.html">Community</a></li>
+              <li><a href="renting.html">Rent Equipment</a></li>
+              <li><a href="profile.html">Profile</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +91 79918 81482</p>
+            <p><i class="fas fa-envelope"></i> niranjanneel009@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Krishi Kishan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+  </body>
+</html>

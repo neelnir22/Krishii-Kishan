@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soil Testing - Krishi Kishan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container header-content">
+        <div class="logo">Krishi <span>Kishan</span></div>
+        <nav>
+          <ul>
+            <li><a href="web.html">Home</a></li>
+            <li><a href="market-linkage.html">Market Linkage</a></li>
+            <li><a href="soil-testing.html" class="active">Soil Testing</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="renting.html">Rent Equipment</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="soil-testing">
+      <div class="container">
+        <h1>Soil Testing & Analysis</h1>
+        <div class="soil-container">
+          <div class="soil-info">
+            <h2>Understand Your Soil Better</h2>
+            <p>
+              Get detailed analysis of your soil's composition and receive
+              personalized recommendations for better crop yield.
+            </p>
+
+            <div class="soil-features">
+              <div class="feature">
+                <div class="feature-icon"><i class="fas fa-flask"></i></div>
+                <h3>Nutrient Analysis</h3>
+                <p>Detailed breakdown of essential nutrients</p>
+              </div>
+              <div class="feature">
+                <div class="feature-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>pH Level Testing</h3>
+                <p>Accurate pH measurement and recommendations</p>
+              </div>
+              <div class="feature">
+                <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                <h3>Crop Recommendations</h3>
+                <p>Best crops for your soil type</p>
+              </div>
+            </div>
+
+            <div class="soil-benefits">
+              <h3>Key Benefits</h3>
+              <div class="benefits-list">
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Increased crop yield</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Optimized fertilizer usage</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Better crop planning</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Improved soil health</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="soil-form">
+            <div class="form-header">
+              <h3>Submit Soil Sample Data</h3>
+              <p>Choose your preferred method of analysis</p>
+            </div>
+            <div class="analysis-methods">
+              <button class="method-btn active" data-method="manual">
+                Manual Data Entry
+              </button>
+              <button class="method-btn" data-method="image">
+                Image Analysis
+              </button>
+            </div>
+            <form id="soil-form">
+              <div class="form-group manual-input">
+                <label for="soil-type">Soil Type</label>
+                <select id="soil-type" required>
+                  <option value="">Select Soil Type</option>
+                  <option value="clay">Clay</option>
+                  <option value="sandy">Sandy</option>
+                  <option value="loamy">Loamy</option>
+                  <option value="silt">Silt</option>
+                </select>
+              </div>
+
+              <div class="form-group manual-input">
+                <label for="ph-level">pH Level</label>
+                <input
+                  type="number"
+                  id="ph-level"
+                  step="0.1"
+                  min="0"
+                  max="14"
+                  required
+                />
+              </div>
+
+              <div class="form-group manual-input">
+                <label for="moisture">Moisture Content (%)</label>
+                <input type="number" id="moisture" min="0" max="100" required />
+              </div>
+
+              <div class="form-group manual-input">
+                <label for="organic-matter">Organic Matter (%)</label>
+                <input
+                  type="number"
+                  id="organic-matter"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </div>
+
+              <div class="form-group image-input" style="display: none">
+                <label>Soil Image</label>
+                <div class="image-upload-container">
+                  <div class="camera-preview" id="camera-preview">
+                    <video id="camera-feed" autoplay playsinline></video>
+                    <canvas id="camera-canvas" style="display: none"></canvas>
+                    <div class="camera-controls">
+                      <button
+                        type="button"
+                        id="start-camera"
+                        class="btn-secondary"
+                      >
+                        <i class="fas fa-camera"></i> Open Camera
+                      </button>
+                      <button
+                        type="button"
+                        id="capture-photo"
+                        class="btn-secondary"
+                        style="display: none"
+                      >
+                        <i class="fas fa-camera"></i> Capture
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="image-preview"
+                    id="image-preview"
+                    style="display: none"
+                  >
+                    <img id="preview-image" src="" alt="Soil Sample Preview" />
+                    <button
+                      type="button"
+                      id="retake-photo"
+                      class="btn-secondary"
+                    >
+                      <i class="fas fa-redo"></i> Retake
+                    </button>
+                  </div>
+                  <input
+                    type="file"
+                    id="image-upload"
+                    accept="image/*"
+                    style="display: none"
+                  />
+                  <button type="button" id="upload-image" class="btn-secondary">
+                    <i class="fas fa-upload"></i> Upload Image
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  placeholder="Enter your location"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="crop-type">Current/Planned Crop</label>
+                <select id="crop-type" required>
+                  <option value="">Select Crop</option>
+                  <option value="wheat">Wheat</option>
+                  <option value="rice">Rice</option>
+                  <option value="cotton">Cotton</option>
+                  <option value="sugarcane">Sugarcane</option>
+                  <option value="vegetables">Vegetables</option>
+                  <option value="fruits">Fruits</option>
+                  <option value="pulses">Pulses</option>
+                  <option value="spices">Spices</option>
+                </select>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn">
+                  <i class="fas fa-flask"></i> Analyze Soil
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="analysis-results" style="display: none">
+            <h3>Soil Analysis Results</h3>
+            <div class="results-container">
+              <div class="input-summary">
+                <h4>Input Summary</h4>
+                <p>
+                  <strong>Soil Type:</strong> <span id="result-type">-</span>
+                </p>
+                <p><strong>pH Level:</strong> <span id="result-ph">-</span></p>
+                <p>
+                  <strong>Moisture Content:</strong>
+                  <span id="result-moisture">-</span>
+                </p>
+                <p>
+                  <strong>Organic Matter:</strong>
+                  <span id="result-organic">-</span>
+                </p>
+              </div>
+              <div class="result-card">
+                <h4>Soil Analysis Results</h4>
+                <div class="result-content">
+                  <p><strong>Type:</strong> <span id="result-type">-</span></p>
+                  <p>
+                    <strong>pH Level:</strong> <span id="result-ph">-</span>
+                  </p>
+                  <p>
+                    <strong>Moisture:</strong>
+                    <span id="result-moisture">-</span>
+                  </p>
+                  <p>
+                    <strong>Organic Matter:</strong>
+                    <span id="result-organic">-</span>
+                  </p>
+                </div>
+              </div>
+              <div class="result-card">
+                <h4>Crop Recommendations</h4>
+                <div class="result-content">
+                  <p><strong>Best Suited Crops:</strong></p>
+                  <ul id="recommended-crops"></ul>
+                </div>
+              </div>
+              <div class="result-card">
+                <h4>Improvement Suggestions</h4>
+                <div class="result-content">
+                  <ul id="improvement-suggestions"></ul>
+                </div>
+              </div>
+            </div>
+            <button class="btn" id="new-analysis">Start New Analysis</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">Krishi <span>Kishan</span></div>
+            <p>Empowering farmers with technology</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="web.html">Home</a></li>
+              <li><a href="market-linkage.html">Market Linkage</a></li>
+              <li><a href="soil-testing.html">Soil Testing</a></li>
+              <li><a href="chatbot.html">AI Chatbot</a></li>
+              <li><a href="community.html">Community</a></li>
+              <li><a href="renting.html">Rent Equipment</a></li>
+              <li><a href="login.html">Login</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +91 79918 81482</p>
+            <p><i class="fas fa-envelope"></i> niranjanneel009@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Krishi Kishan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Login to Krishi Kishan</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="remember" />
+              Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="register-link">
+            Don't have an account? <a href="#" id="registerLink">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Create Account</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input
+              type="text"
+              id="reg-name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="reg-phone"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="reg-confirm-password"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="reg-location">Location</label>
+            <input
+              type="text"
+              id="reg-location"
+              placeholder="Enter your location"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+          <div class="login-link">
+            Already have an account? <a href="#" id="loginLink">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="css/soil-testing.css" />
+
+    <script src="js/auth.js"></script>
+    <script src="js/soil-testing.js"></script>
+  </body>
+</html>

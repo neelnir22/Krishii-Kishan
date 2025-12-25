@@ -1,0 +1,31 @@
+      .quantity-input-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .quantity-number-input {
+        width: 60px;
+        height: 40px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .quantity-unit-select {
+        width: 200px;
+        height: 40px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+      }
+
+      .quantity-number-input:focus,
+      .quantity-unit-select:focus {
+        outline: none;
+        border-color: #4caf50;
+      }
